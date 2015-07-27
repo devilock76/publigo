@@ -1,8 +1,6 @@
 package publigo
 
 import (
-	"fmt"
-	"github.com/justinas/alice"
 	"net/http"
 )
 

@@ -1,8 +1,8 @@
 package publigo
 
 import (
-	"fmt"
 	"net/http"
+	"github.com/justinas/alice"
 )
 
 // Handler for basic logging
