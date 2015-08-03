@@ -33,24 +33,24 @@ var routes = Routes{
 		"Index",
 		"GET",
 		"/",
-		Index,
+		GetIndex,
 	},
 	Route{
 		"Category",
 		"GET",
 		"/{Category}",
-		CategoryIndex,
+		GetCategoryIndex,
 	},
 	Route{
 		"Page",
 		"GET",
 		"/{Page}",
-		Page,
+		GetPage,
 	},
 	Route{
 		"Post",
 		"GET",
 		"/{Post}",
-		Post,
+		GetPost,
 	},
 }
