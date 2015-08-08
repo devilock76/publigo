@@ -1,32 +1,33 @@
-package publigo
+package main
 
 import (
+	"fmt"
 	"net/http"
-	"github.com/justinas/alice"
+	//"github.com/justinas/alice"
 )
 
 // Handler for basic logging
-func loggingHandler(h http.Handler) http.Handler {
-	return http.LoggingHandler(h, 1*time.Second, "timed out")
-}
+//func loggingHandler(h http.Handler) http.Handler {
+//	return http.LoggingHandler(h, 1*time.Second, "timed out")
+//}
 
 // Handler for user authorization
-func authHandler(h http.Handler) http.Handler {
-	return http.AuthHandler(h, user, "Authenticated")
+//func authHandler(h http.Handler) http.Handler {
+//	return http.AuthHandler(h, user, "Authenticated")
+//}
+
+func GetIndex(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintln(w, "Welcome! Index")
 }
 
-func GetIndex(h http.Handler) http.Handler {
-	return http.GetIndex(h, index, "Returned")
+func GetCategoryIndex(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintln(w, "Welcome! Category Index")
 }
 
-func GetCategoryIndex(h http.Handler) http.Handler {
-	return http.GetCategoryIndex(h, categoryindex, "Returned")
+func GetPage(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintln(w, "Welcome! Page")
 }
 
-func GetPage(h http.Handler) http.Handler {
-	return http.GetPage(h, page, "Returned")
-}
-
-func GetPost(h http.Handler) http.Handler {
-	return http.GetPost(h, post, "Returned")
+func GetPost(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintln(w, "Welcome! Post")
 }

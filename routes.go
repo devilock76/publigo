@@ -1,4 +1,4 @@
-package publigo
+package main
 
 import (
 	"github.com/gorilla/mux"
@@ -38,19 +38,19 @@ var routes = Routes{
 	Route{
 		"Category",
 		"GET",
-		"/{Category}",
+		"/Category/{Category}",
 		GetCategoryIndex,
 	},
 	Route{
 		"Page",
 		"GET",
-		"/{Page}",
+		"/Page/{Page}",
 		GetPage,
 	},
 	Route{
 		"Post",
 		"GET",
-		"/{Post}",
+		"/Post/{Post}",
 		GetPost,
 	},
 }
