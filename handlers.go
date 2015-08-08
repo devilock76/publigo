@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"html/template"
 	//"github.com/justinas/alice"
 )
 
@@ -16,8 +17,20 @@ import (
 //	return http.AuthHandler(h, user, "Authenticated")
 //}
 
+var templates = template.Must(template.ParseFiles("templates/main.html"))
+
 func GetIndex(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintln(w, "Welcome! Index")
+	title := "Welcome"
+	content := `This is the welcome page for this go document<br>
+	There was a new line <br>
+	<br>
+	There was 2`
+	p := &Page{Title: title, Content: template.HTML(content)}
+
+    err := templates.ExecuteTemplate(w, "main.html", p)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
 }
 
 func GetCategoryIndex(w http.ResponseWriter, r *http.Request) {
