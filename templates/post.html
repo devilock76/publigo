@@ -1,0 +1,9 @@
+{{define "post"}}
+{{range $pagepost := .}}
+<div>
+	<div>{{$pagepost.Title}}</div>
+	<div>{{$pagepost.Content}}</div>
+</div>
+<br>
+{{end}}
+{{end}}

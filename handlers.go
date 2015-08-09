@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 	"html/template"
+	"strconv"
 	//"github.com/justinas/alice"
 )
 
@@ -17,7 +18,7 @@ import (
 //	return http.AuthHandler(h, user, "Authenticated")
 //}
 
-var templates = template.Must(template.ParseFiles("templates/main.html"))
+var templates = template.Must(template.ParseFiles("templates/main.html", "templates/post.html"))
 
 func GetIndex(w http.ResponseWriter, r *http.Request) {
 	title := "Welcome"
@@ -25,9 +26,15 @@ func GetIndex(w http.ResponseWriter, r *http.Request) {
 	There was a new line <br>
 	<br>
 	There was 2`
-	p := &Page{Title: title, Content: template.HTML(content)}
+	
+	indexPosts := GetRecentPosts()
+//	for _, each := range indexPosts {
+//		_ = templates.ExecuteTemplate(w, "post", each) 
+//	}
 
-    err := templates.ExecuteTemplate(w, "main.html", p)
+	p := &Page{Title: title, Content: template.HTML(content), PagePosts: indexPosts}
+
+    err := templates.ExecuteTemplate(w, "main", p)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
@@ -43,4 +50,15 @@ func GetPage(w http.ResponseWriter, r *http.Request) {
 
 func GetPost(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, "Welcome! Post")
+}
+
+func GetRecentPosts() []Post {
+	recent := []Post{}
+	for i := 0; i < 4; i++ {
+		title := "Post " + strconv.Itoa(i+1)
+		content := "This is content for post " + strconv.Itoa(i+1)
+		post := Post{Title: title, Content: template.HTML(content)}
+		recent = append(recent, post)
+	}
+	return recent
 }
