@@ -53,4 +53,10 @@ var routes = Routes{
 		"/Post/{Post}",
 		GetPost,
 	},
+	Route{
+		"PostsIndex",
+		"GET",
+		"/JSON/Posts",
+		GetJSONPosts,
+	},
 }

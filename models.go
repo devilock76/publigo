@@ -18,3 +18,10 @@ type Post struct {
 }
 
 type Posts []Post
+
+type JSONPost struct {
+    Title	string	`json:"Title"`
+    Content	string	`json:"Content"`
+}
+
+type JSONPosts []JSONPost
