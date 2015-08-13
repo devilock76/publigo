@@ -8,14 +8,20 @@ import (
 )
 
 func GetJSONPosts (w http.ResponseWriter, r *http.Request) {
-	somePosts := CreateSamplePosts
+	somePosts := CreateSamplePosts()
 	enc := json.NewEncoder(w)
-	for _, somePost := range somePosts() {
+	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+    w.WriteHeader(http.StatusOK)
+	err := enc.Encode(somePosts)
+	if err != nil {
+		log.Println(err)
+	}
+/*	for _, somePost := range somePosts() {
 		err := enc.Encode(somePost)
 		if err != nil {
 			log.Println(err)
 		}
-	}
+	}*/
 }
 
 func CreateSamplePosts () JSONPosts {
