@@ -11,10 +11,15 @@ func GetJSONPosts (w http.ResponseWriter, r *http.Request) {
 	somePosts := CreateSamplePosts()
 	enc := json.NewEncoder(w)
 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	//w.Header().Set("Content-Type", "text/json; charset=utf-8")
     w.WriteHeader(http.StatusOK)
 	err := enc.Encode(somePosts)
 	if err != nil {
 		log.Println(err)
+	} else {
+		log.Println("Data requested")
+		log.Println(somePosts)
 	}
 /*	for _, somePost := range somePosts() {
 		err := enc.Encode(somePost)
