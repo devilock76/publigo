@@ -2,5 +2,5 @@
 	"RootPath" : "/home/superfly/Dev/go",
 	"TemplPath" : "templates",
 	"DB" : "db/publigo",
-	"Port" : ":3000"
+	"Port" : "3000"
 }

@@ -5,13 +5,23 @@ import (
 	"net/http"
 	"html/template"
 	"strconv"
-	//"github.com/justinas/alice"
+	"log"
 )
 
-// Handler for basic logging
-//func loggingHandler(h http.Handler) http.Handler {
-//	return http.LoggingHandler(h, 1*time.Second, "timed out")
-//}
+//Handler for basic logging
+func LogHandler(h http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+        log.Println("Hit the Log Handler", r.URL)
+        h.ServeHTTP(w, r)
+    })
+}
+
+func ErrorHandler(h http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+        log.Println("Hit the Error Handler", r.URL)
+        h.ServeHTTP(w, r)
+    })
+}
 
 // Handler for user authorization
 //func authHandler(h http.Handler) http.Handler {
