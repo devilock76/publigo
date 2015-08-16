@@ -7,10 +7,14 @@ import (
 )
 
 func main() {
+	
+	CurrentConfig := GetSettings("./config.json")
+	
+	log.Println(CurrentConfig)
 
 	router := NewRouter()
 	
-	fmt.Println("Listening on port 3000")
+	fmt.Printf("Listening on port %s\n", CurrentConfig.Port)
 
-	log.Fatal(http.ListenAndServe(":3000", router))
+	log.Fatal(http.ListenAndServe(CurrentConfig.Port, router))
 }

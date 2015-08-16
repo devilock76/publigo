@@ -28,9 +28,6 @@ func GetIndex(w http.ResponseWriter, r *http.Request) {
 	There was 2`
 	
 	indexPosts := GetRecentPosts()
-//	for _, each := range indexPosts {
-//		_ = templates.ExecuteTemplate(w, "post", each) 
-//	}
 
 	p := &Page{Title: title, Content: template.HTML(content), PagePosts: indexPosts}
 
