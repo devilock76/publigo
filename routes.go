@@ -24,17 +24,18 @@ func NewRouter() *mux.Router {
 			Name(route.Name).
 			Handler(route.HandlerFunc)
 	}
+	router.PathPrefix("/").Handler(http.StripPrefix("/", http.FileServer(http.Dir("./frontend/"))))
 
 	return router
 }
 
 var routes = Routes{
-	Route{
-		"Index",
-		"GET",
-		"/",
-		GetIndex,
-	},
+	//Route{
+		//"Index",
+		//"GET",
+		//"/",
+		//router.PathPrefix("/frontend/").Handler(http.StripPrefix("/frontend/", http.FileServer(http.Dir("./frontend/")))),
+	//},
 	Route{
 		"Category",
 		"GET",
