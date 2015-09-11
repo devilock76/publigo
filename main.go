@@ -13,7 +13,7 @@ func main() {
 	configPtr := flag.String("path", ".", "Default is PWD")
 	flag.Parse()
 	
-	CurrentConfig := GetSettings(fmt.Sprint(*configPtr, "/config.json"))
+	GetSettings(fmt.Sprint(*configPtr, "/config.json"))
 	
 	log.Println(CurrentConfig)
 	

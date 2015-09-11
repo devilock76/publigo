@@ -14,13 +14,14 @@ type SysSettings struct {
 	Port		string	`json:"Port"`
 }
 
-func GetSettings (configFile string) SysSettings {
+var CurrentConfig SysSettings
+
+func GetSettings (configFile string) {
 	file, err := ioutil.ReadFile(configFile)
 	if err != nil {
 		log.Println(err)
 		os.Exit(1)
 	}
-	config := SysSettings{}
-	json.Unmarshal(file, &config)
-	return config
+	//config = SysSettings{}
+	json.Unmarshal(file, &CurrentConfig)
 }
