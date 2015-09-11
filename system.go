@@ -12,6 +12,7 @@ type SysSettings struct {
 	TemplPath	string	`json:"TemplPath"`
 	DB			string	`json:"DB"`
 	Port		string	`json:"Port"`
+	ServeStatic	bool	`json:"ServeStatic"`
 }
 
 var CurrentConfig SysSettings
