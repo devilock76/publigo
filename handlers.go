@@ -41,7 +41,7 @@ func GetIndex(w http.ResponseWriter, r *http.Request) {
 
 	p := &Page{Title: title, Content: template.HTML(content), PagePosts: indexPosts}
 
-    err := templates.ExecuteTemplate(w, "main", p)
+	err := templates.ExecuteTemplate(w, "main", p)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
